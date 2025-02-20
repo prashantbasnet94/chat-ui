@@ -236,10 +236,10 @@ Here is a list of header names for common auth providers:
 You can use a few environment variables to customize the look and feel of chat-ui. These are by default:
 
 ```env
-PUBLIC_APP_NAME=ChatUI
-PUBLIC_APP_ASSETS=chatui
+PUBLIC_APP_NAME=Unisala
+PUBLIC_APP_ASSETS=unisalaAi
 PUBLIC_APP_COLOR=blue
-PUBLIC_APP_DESCRIPTION="Making the community's best AI chat models available to everyone."
+PUBLIC_APP_DESCRIPTION="Join the Learning Movement"
 PUBLIC_APP_DATA_SHARING=
 PUBLIC_APP_DISCLAIMER=
 ```

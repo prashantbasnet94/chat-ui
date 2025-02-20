@@ -97,13 +97,14 @@ export async function endpointAnthropic(
 					await endpointMessagesToAnthropicMessages(messages, multimodal, conversationId),
 					toolResults
 				) as MessageParam[],
-				max_tokens: parameters?.max_new_tokens,
+				max_tokens: parameters?.max_new_tokens ?? 4096,
 				temperature: parameters?.temperature,
 				top_p: parameters?.top_p,
 				top_k: parameters?.top_k,
 				stop_sequences: parameters?.stop,
 				system,
 			});
+
 			while (true) {
 				const result = await Promise.race([stream.emitted("text"), stream.emitted("end")]);
 

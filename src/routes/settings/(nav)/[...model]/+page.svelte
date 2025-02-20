@@ -47,7 +47,7 @@
 	</div>
 
 	<div class="flex flex-wrap items-center gap-2 md:gap-4">
-		{#if model.modelUrl}
+		<!-- {#if model.modelUrl}
 			<a
 				href={model.modelUrl || "https://huggingface.co/" + model.name}
 				target="_blank"
@@ -57,9 +57,9 @@
 				<CarbonArrowUpRight class="mr-1.5 shrink-0 text-xs " />
 				Model page
 			</a>
-		{/if}
+		{/if} -->
 
-		{#if model.datasetName || model.datasetUrl}
+		<!-- {#if model.datasetName || model.datasetUrl}
 			<a
 				href={model.datasetUrl || "https://huggingface.co/datasets/" + model.datasetName}
 				target="_blank"
@@ -69,7 +69,7 @@
 				<CarbonArrowUpRight class="mr-1.5 shrink-0 text-xs " />
 				Dataset page
 			</a>
-		{/if}
+		{/if} -->
 
 		{#if model.websiteUrl}
 			<a
@@ -84,7 +84,7 @@
 		{/if}
 
 		{#if model.hasInferenceAPI}
-			<a
+			<!-- <a
 				href={"https://huggingface.co/playground?modelId=" + model.name}
 				target="_blank"
 				rel="noreferrer"
@@ -92,7 +92,7 @@
 			>
 				<CarbonCode class="mr-1.5 shrink-0 text-xs " />
 				API Playground
-			</a>
+			</a> -->
 		{/if}
 
 		<CopyToClipBoardBtn

@@ -22,7 +22,7 @@
 
 <svelte:head>
 	{#if isHuggingChat}
-		<title>HuggingChat - Models</title>
+		<title>Unisala - Models</title>
 		<meta property="og:title" content="HuggingChat - Models" />
 		<meta property="og:type" content="link" />
 		<meta property="og:description" content="Browse HuggingChat available models" />

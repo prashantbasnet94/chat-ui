@@ -36,7 +36,7 @@
 			</div>
 			<p class="text-base text-gray-600 dark:text-gray-400">
 				{envPublic.PUBLIC_APP_DESCRIPTION ||
-					"Making the community's best AI chat models available to everyone."}
+					"Keep Your Learning Momentum Going."}
 			</p>
 		</div>
 	</div>
