@@ -18,6 +18,11 @@ function loadTTFAsArrayBuffer() {
 }
 
 export default defineConfig({
+	kit: {
+		paths: {
+			base: "/llm", // Ensure this matches the subpath where the app is deployed
+		},
+	},
 	plugins: [
 		sveltekit(),
 		Icons({
