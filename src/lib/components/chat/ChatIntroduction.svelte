@@ -35,8 +35,7 @@
 				</div>
 			</div>
 			<p class="text-base text-gray-600 dark:text-gray-400">
-				{envPublic.PUBLIC_APP_DESCRIPTION ||
-					"Keep Your Learning Momentum Going."}
+				{envPublic.PUBLIC_APP_DESCRIPTION || "Keep Your Learning Momentum Going."}
 			</p>
 		</div>
 	</div>
