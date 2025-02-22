@@ -37,7 +37,6 @@ jobs:
             sudo rm -rf ~/unisala-web/unisala-svelte/{*,.[!.]*,..?*}
             echo "Directory ~/unisala-web/unisala-svelte cleared"
 
-
       # Copy .env file from a safe location to the deployment directory
       - name: Copy .env file
         uses: appleboy/ssh-action@v0.1.8
@@ -49,7 +48,7 @@ jobs:
           script: |
             cp ~/unisala-web/.env ~/unisala-web/unisala-svelte/build/.env
             echo ".env file copied to deployment directory"
-            
+
       # Deploy SvelteKit build artifacts
       - name: Deploy build artifacts
         uses: appleboy/scp-action@master
@@ -71,7 +70,7 @@ jobs:
           port: 22
           script: |
             cd ~/unisala-web/unisala-svelte/build
-            npm install --production
+            npm ci --omit dev
 
       # Restart application and reload Nginx
       - name: Restart application
