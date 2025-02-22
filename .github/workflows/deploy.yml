@@ -23,6 +23,7 @@ jobs:
           npm run build
           cp package.json build/
           cp package-lock.json build/
+          cp start-llm-server.mjs build/
 
       # Clear and prepare deployment directory
       - name: Clear deployment directory
@@ -36,6 +37,19 @@ jobs:
             sudo rm -rf ~/unisala-web/unisala-svelte/{*,.[!.]*,..?*}
             echo "Directory ~/unisala-web/unisala-svelte cleared"
 
+
+      # Copy .env file from a safe location to the deployment directory
+      - name: Copy .env file
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: "65.0.152.95"
+          username: "ec2-user"
+          key: ${{ secrets.TEST_SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cp ~/unisala-web/.env ~/unisala-web/unisala-svelte/build/.env
+            echo ".env file copied to deployment directory"
+            
       # Deploy SvelteKit build artifacts
       - name: Deploy build artifacts
         uses: appleboy/scp-action@master
