@@ -237,7 +237,7 @@ You can use a few environment variables to customize the look and feel of chat-u
 
 ```env
 PUBLIC_APP_NAME=Unisala
-PUBLIC_APP_ASSETS=unisalaAi
+PUBLIC_APP_ASSETS=unisala
 PUBLIC_APP_COLOR=blue
 PUBLIC_APP_DESCRIPTION="Join the Learning Movement"
 PUBLIC_APP_DATA_SHARING=
