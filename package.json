@@ -4,7 +4,7 @@
 	"private": true,
 	"packageManager": "npm@9.5.0",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --port 4173",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -75,7 +75,7 @@
 		"aws-sigv4-fetch": "^4.0.1",
 		"aws4": "^1.13.0",
 		"date-fns": "^2.29.3",
-		"dotenv": "^16.4.7",
+		"dotenv": "^16.0.3",
 		"express": "^4.21.2",
 		"file-type": "^19.4.1",
 		"google-auth-library": "^9.13.0",
