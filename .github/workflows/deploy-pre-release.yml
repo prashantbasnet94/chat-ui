@@ -1,0 +1,85 @@
+name: Deploy
+
+on:
+  push:
+    branches: [pre-release]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # SvelteKit Project Setup and Build
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+          cp package.json build/
+          cp package-lock.json build/
+          cp start-llm-server.mjs build/
+
+      # Clear and prepare deployment directory
+      - name: Clear deployment directory
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: "3.84.137.137"
+          username: "ec2-user"
+          key: ${{ secrets.UNISALA_LIGHT }}
+          port: 22
+          script: |
+            sudo rm -rf ~/unisala-web/unisala-svelte/{*,.[!.]*,..?*}
+            echo "Directory ~/unisala-web/unisala-svelte cleared"
+
+      # Copy .env file from a safe location to the deployment directory
+      - name: Copy .env file
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: "3.84.137.137"
+          username: "ec2-user"
+          key: ${{ secrets.UNISALA_LIGHT }}
+          port: 22
+          script: |
+            cp ~/unisala-web/.env ~/unisala-web/unisala-svelte/build/.env
+            echo ".env file copied to deployment directory"
+
+      # Deploy SvelteKit build artifacts
+      - name: Deploy build artifacts
+        uses: appleboy/scp-action@master
+        with:
+          host: "3.84.137.137"
+          username: "ec2-user"
+          key: ${{ secrets.UNISALA_LIGHT }}
+          port: 22
+          source: "build/*"
+          target: "~/unisala-web/unisala-svelte/"
+
+      # Install production dependencies
+      - name: Install production dependencies
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: "3.84.137.137"
+          username: "ec2-user"
+          key: ${{ secrets.UNISALA_LIGHT }}
+          port: 22
+          script: |
+            cd ~/unisala-web/unisala-svelte/build
+            npm install --production
+
+      # Restart application and reload Nginx
+      - name: Restart application
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: "3.84.137.137"
+          username: "ec2-user"
+          key: ${{ secrets.UNISALA_LIGHT }}
+          port: 22
+          script: |
+            pm2 restart unisala-svelte
+            sudo systemctl reload nginx
