@@ -20,7 +20,7 @@ function loadTTFAsArrayBuffer() {
 export default defineConfig({
 	kit: {
 		paths: {
-			base: "", // Ensure this matches the subpath where the app is deployed
+			base: "/llm", // Ensure this matches the subpath where the app is deployed
 		},
 	},
 	plugins: [

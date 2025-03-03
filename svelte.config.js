@@ -28,7 +28,7 @@ const config = {
 		adapter: adapter(),
 
 		paths: {
-			base: process.env.APP_BASE || "",
+			base: process.env.APP_BASE || "/llm",
 			relative: false,
 		},
 		csrf: {
