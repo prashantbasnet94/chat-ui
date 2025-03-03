@@ -176,58 +176,62 @@
 </script>
 
 <svelte:head>
-	<title>{envPublic.PUBLIC_APP_NAME}</title>
-	<meta name="description" content="The first open source alternative to ChatGPT. 💪" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:site" content="@huggingface" />
+    <title>Unisala - AI-Powered Note Taking & Knowledge Sharing App</title>
+    <meta name="description" content="Unisala is an AI-powered note-taking and knowledge-sharing app. Organize your notes, collaborate with others, and generate insights with integrated AI models like GPT-4, Claude 3, and DeepSeek." />
+    <meta name="keywords" content="note-taking, AI, GPT-4, Claude 3, DeepSeek, knowledge sharing, productivity, collaboration" />
+    <meta name="author" content="Unisala" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="{envPublic.PUBLIC_ORIGIN || $page.url.origin}{base}" />
 
-	<!-- use those meta tags everywhere except on the share assistant page -->
-	<!-- feel free to refacto if there's a better way -->
-	{#if !$page.url.pathname.includes("/assistant/") && $page.route.id !== "/assistants" && !$page.url.pathname.includes("/models/") && !$page.url.pathname.includes("/tools")}
-		<meta property="og:title" content={envPublic.PUBLIC_APP_NAME} />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="{envPublic.PUBLIC_ORIGIN || $page.url.origin}{base}" />
-		<meta
-			property="og:image"
-			content="{envPublic.PUBLIC_ORIGIN ||
-				$page.url.origin}{base}/{envPublic.PUBLIC_APP_ASSETS}/thumbnail.png"
-		/>
-		<meta property="og:description" content={envPublic.PUBLIC_APP_DESCRIPTION} />
-	{/if}
-	<link
-		rel="icon"
-		href="{envPublic.PUBLIC_ORIGIN ||
-			$page.url.origin}{base}/{envPublic.PUBLIC_APP_ASSETS}/favicon.ico"
-		sizes="32x32"
-	/>
-	<link
-		rel="icon"
-		href="{envPublic.PUBLIC_ORIGIN ||
-			$page.url.origin}{base}/{envPublic.PUBLIC_APP_ASSETS}/icon.svg"
-		type="image/svg+xml"
-	/>
-	<link
-		rel="apple-touch-icon"
-		href="{envPublic.PUBLIC_ORIGIN ||
-			$page.url.origin}{base}/{envPublic.PUBLIC_APP_ASSETS}/apple-touch-icon.png"
-	/>
-	<link
-		rel="manifest"
-		href="{envPublic.PUBLIC_ORIGIN ||
-			$page.url.origin}{base}/{envPublic.PUBLIC_APP_ASSETS}/manifest.json"
-	/>
+    <!-- OpenGraph Tags for Social Media -->
+    <meta property="og:title" content="Unisala - AI-Powered Note Taking & Knowledge Sharing App" />
+    <meta property="og:description" content="Unisala is an AI-powered note-taking and knowledge-sharing app. Organize your notes, collaborate with others, and generate insights with integrated AI models like GPT-4, Claude 3, and DeepSeek." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{envPublic.PUBLIC_ORIGIN || $page.url.origin}{base}" />
+    <meta property="og:image" content="{envPublic.PUBLIC_ORIGIN || $page.url.origin}{base}/{envPublic.PUBLIC_APP_ASSETS}/thumbnail.png" />
+    <meta property="og:site_name" content="Unisala" />
 
-	{#if envPublic.PUBLIC_PLAUSIBLE_SCRIPT_URL && envPublic.PUBLIC_ORIGIN}
-		<script
-			defer
-			data-domain={new URL(envPublic.PUBLIC_ORIGIN).hostname}
-			src={envPublic.PUBLIC_PLAUSIBLE_SCRIPT_URL}
-		></script>
-	{/if}
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@unisala_app" />
+    <meta name="twitter:title" content="Unisala - AI-Powered Note Taking & Knowledge Sharing App" />
+    <meta name="twitter:description" content="Unisala is an AI-powered note-taking and knowledge-sharing app. Organize your notes, collaborate with others, and generate insights with integrated AI models like GPT-4, Claude 3, and DeepSeek." />
+    <meta name="twitter:image" content="{envPublic.PUBLIC_ORIGIN || $page.url.origin}{base}/{envPublic.PUBLIC_APP_ASSETS}/thumbnail.png" />
 
-	{#if envPublic.PUBLIC_APPLE_APP_ID}
-		<meta name="apple-itunes-app" content={`app-id=${envPublic.PUBLIC_APPLE_APP_ID}`} />
-	{/if}
+    <!-- Favicon and App Icons -->
+    <link rel="icon" href="{envPublic.PUBLIC_ORIGIN || $page.url.origin}{base}/{envPublic.PUBLIC_APP_ASSETS}/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="{envPublic.PUBLIC_ORIGIN || $page.url.origin}{base}/{envPublic.PUBLIC_APP_ASSETS}/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="{envPublic.PUBLIC_ORIGIN || $page.url.origin}{base}/{envPublic.PUBLIC_APP_ASSETS}/apple-touch-icon.png" />
+    <link rel="manifest" href="{envPublic.PUBLIC_ORIGIN || $page.url.origin}{base}/{envPublic.PUBLIC_APP_ASSETS}/manifest.json" />
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Unisala",
+            "description": "Unisala is an AI-powered note-taking and knowledge-sharing app. Organize your notes, collaborate with others, and generate insights with integrated AI models like GPT-4, Claude 3, and DeepSeek.",
+            "url": "{envPublic.PUBLIC_ORIGIN || $page.url.origin}{base}",
+            "image": "{envPublic.PUBLIC_ORIGIN || $page.url.origin}{base}/{envPublic.PUBLIC_APP_ASSETS}/thumbnail.png",
+            "applicationCategory": "Productivity",
+            "operatingSystem": "Web, iOS, Android",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            }
+        }
+    </script>
+
+    <!-- Plausible Analytics -->
+    {#if envPublic.PUBLIC_PLAUSIBLE_SCRIPT_URL && envPublic.PUBLIC_ORIGIN}
+        <script defer data-domain={new URL(envPublic.PUBLIC_ORIGIN).hostname} src={envPublic.PUBLIC_PLAUSIBLE_SCRIPT_URL}></script>
+    {/if}
+
+    <!-- Apple App Link -->
+    {#if envPublic.PUBLIC_APPLE_APP_ID}
+        <meta name="apple-itunes-app" content={`app-id=${envPublic.PUBLIC_APPLE_APP_ID}`} />
+    {/if}
 </svelte:head>
 
 {#if showDisclaimer}
