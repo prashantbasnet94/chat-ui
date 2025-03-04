@@ -99,7 +99,7 @@
 </script>
 
 <form
-	class="relative flex h-full flex-col overflow-y-auto p-4 md:p-8"
+	class="relative flex h-full flex-col overflow-y-auto md:p-8 md:pt-0"
 	enctype="multipart/form-data"
 	onsubmit={async (e) => {
 		e.preventDefault();
@@ -108,7 +108,6 @@
 		}
 		const formData = new FormData(e.target as HTMLFormElement, e.submitter);
 
-		console.log(formData);
 		loading = true;
 		if (files?.[0] && files[0].size > 0) {
 			formData.set("avatar", files[0]);
