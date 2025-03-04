@@ -1,10 +1,10 @@
 import adapter from "@sveltejs/adapter-node";
-import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+import {vitePreprocess} from "@sveltejs/vite-plugin-svelte";
 import dotenv from "dotenv";
-import { execSync } from "child_process";
+import {execSync} from "child_process";
 
-dotenv.config({ path: "./.env.local" });
-dotenv.config({ path: "./.env" });
+dotenv.config({path: "./.env.local"});
+dotenv.config({path: "./.env"});
 
 function getCurrentCommitSHA() {
 	try {
@@ -28,7 +28,7 @@ const config = {
 		adapter: adapter(),
 
 		paths: {
-			base: process.env.APP_BASE || "",
+			base: process.env.APP_BASE || "/llm",
 			relative: false,
 		},
 		csrf: {
@@ -37,7 +37,7 @@ const config = {
 		},
 		csp: {
 			directives: {
-				...(process.env.ALLOW_IFRAME === "true" ? {} : { "frame-ancestors": ["'none'"] }),
+				...(process.env.ALLOW_IFRAME === "true" ? {} : {"frame-ancestors": [ "'none'" ]}),
 			},
 		},
 	},
