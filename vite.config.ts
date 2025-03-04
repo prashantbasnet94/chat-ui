@@ -20,7 +20,7 @@ function loadTTFAsArrayBuffer() {
 export default defineConfig({
 	kit: {
 		paths: {
-			base: "/llm", // Ensure this matches the subpath where the app is deployed
+			base: "", // Ensure this matches the subpath where the app is deployed
 		},
 	},
 	plugins: [
@@ -31,14 +31,14 @@ export default defineConfig({
 		loadTTFAsArrayBuffer(),
 	],
 	optimizeDeps: {
-		include: [ "uuid", "@huggingface/transformers", "sharp", "@gradio/client" ],
+		include: ["uuid", "@huggingface/transformers", "sharp", "@gradio/client"],
 	},
 	server: {
 		open: "/",
 	},
 	test: {
-		setupFiles: [ "./scripts/setupTest.ts" ],
-		deps: { inline: [ "@sveltejs/kit" ] },
+		setupFiles: ["./scripts/setupTest.ts"],
+		deps: { inline: ["@sveltejs/kit"] },
 		globals: true,
 		testTimeout: 10000,
 	},
