@@ -74,11 +74,11 @@
 
 		<div class="mt-12 flex flex-col gap-3">
 			<a
-				href="https://huggingface.co/spaces/huggingchat/chat-ui/discussions"
+				href="https://unisala.com/new-story"
 				target="_blank"
 				rel="noreferrer"
 				class="flex items-center underline decoration-gray-300 underline-offset-2 hover:decoration-gray-700"
-				><CarbonArrowUpRight class="mr-1.5 shrink-0 text-sm " /> Share your feedback on HuggingChat</a
+				><CarbonArrowUpRight class="mr-1.5 shrink-0 text-sm " /> Share your feedback on Unisala</a
 			>
 			<button
 				onclick={async (e) => {
